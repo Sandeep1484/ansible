@@ -1,0 +1,3 @@
+---
+# defaults/main.yml
+jenkins_http_port: 8080

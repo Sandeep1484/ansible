@@ -1,0 +1,48 @@
+---
+# tasks/main.yml
+- name: Install required dependencies for Ubuntu
+  apt:
+    name:
+      - apt-transport-https
+      - ca-certificates
+      - curl
+      - software-properties-common
+    state: present
+    update_cache: yes
+
+- name: Add Jenkins repository key
+  apt_key:
+    url: https://pkg.jenkins.io/debian/jenkins.io.key
+    state: present
+
+- name: Add Jenkins repository
+  apt_repository:
+    repo: 'deb http://pkg.jenkins.io/debian-stable binary/'
+    state: present
+
+- name: Update package list
+  apt:
+    update_cache: yes
+
+- name: Install Jenkins
+  apt:
+    name: jenkins
+    state: present
+
+- name: Ensure Jenkins is started and enabled at boot
+  systemd:
+    name: jenkins
+    enabled: true
+    state: started
+
+- name: Open firewall port for Jenkins (if UFW is enabled)
+  ufw:
+    rule: allow
+    port: 8080
+    proto: tcp
+
+- name: Wait for Jenkins to start
+  wait_for:
+    port: 8080
+    timeout: 60
+    state: started

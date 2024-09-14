@@ -1,0 +1,6 @@
+---
+- name: Playbook to install Jenkins on Ubuntu
+  hosts: managed_nodes
+  become: true
+  roles:
+    - jenkins

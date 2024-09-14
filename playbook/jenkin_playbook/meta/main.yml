@@ -1,0 +1,15 @@
+---
+# meta/main.yml
+dependencies: []
+
+galaxy_info:
+  author: your_name
+  description: Jenkins installation role for Ubuntu
+  license: MIT
+  min_ansible_version: 2.9
+  platforms:
+    - name: Ubuntu
+      versions:
+        - bionic
+        - focal
+        - jammy
