@@ -1,0 +1,7 @@
+---
+# handlers/main.yml
+- name: Restart Jenkins
+  systemd:
+    name: jenkins
+    state: restarted
+    enabled: true
