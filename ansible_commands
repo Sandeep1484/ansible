@@ -1,0 +1,24 @@
+ssh-copy-id -f "-o IdentityFile <PATH TO PEM FILE>" ubuntu@<INSTANCE-PUBLIC-IP>
+ansible --version
+ansible -i inventory.ini -m ping all
+
+ansible all -m shell -a "uptime"
+ansible-playbook playbook.yml
+ansible-playbook playbook.yml --syntax-check
+ansible-playbook playbook.yml --check
+ansible-inventory --list
+ansible all -m shell -a "whoami" -u username
+ansible all -m setup
+ansible-playbook playbook.yml --limit host_group
+ansible-playbook playbook.yml --become
+ansible-playbook playbook.yml --list-tags
+ansible-playbook playbook.yml --tags "tag_name"
+ansible-playbook -i inventory_file playbook.yml
+
+
+ansible-galaxy role init <role_name>
+ansible-galaxy role init webserver
+ansible-playbook -i inventory.ini playbook.yaml
+
+ansible all -i inventory.ini -b -m apt -a "name=openjdk-17-jdk state=present update_cache=yes"
+ansible all -i inventory.ini -b -m apt -a 'name=maven update_cache=yes'
