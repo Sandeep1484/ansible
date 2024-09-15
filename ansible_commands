@@ -15,9 +15,12 @@ ansible-playbook playbook.yml --list-tags
 ansible-playbook playbook.yml --tags "tag_name"
 ansible-playbook -i inventory_file playbook.yml
 
+ls ~/.ansible/roles
+
 
 ansible-galaxy role init <role_name>
 ansible-galaxy role init webserver
+ansible-galaxy -h
 ansible-playbook -i inventory.ini playbook.yaml
 
 ansible all -i inventory.ini -b -m apt -a "name=openjdk-17-jdk state=present update_cache=yes"
