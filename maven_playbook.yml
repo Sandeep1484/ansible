@@ -1,0 +1,10 @@
+---
+- name: Install Apache Maven on Ubuntu servers
+  hosts: all
+  become: yes
+  tasks:
+    - name: Install Maven
+      apt:
+        name: maven
+        state: present
+        update_cache: yes
