@@ -14,6 +14,10 @@ ansible-playbook playbook.yml --become
 ansible-playbook playbook.yml --list-tags
 ansible-playbook playbook.yml --tags "tag_name"
 
+openssl rand -base64 2048 > vault.pass "base68 is used here - vault.pass is name here"
+ansible-vault create group_vars/all/pass.yml --vault-password-file vault.pass  "keep passwords in pass.yml file"
+
+
 ansible-playbook -i inventory_file playbook.yml
 
 ls ~/.ansible/roles
